@@ -28,18 +28,45 @@ export class Extension {
     type: ExtensionType["type"] = "bangumi";
     nsfw: boolean = false;
 
+    // request(url: string, options?: any) {
+    //     if (!options) {
+    //         options = {};
+    //     }
+    //     if (!options.headers) {
+    //         options.headers = { "Miru-Url": this.webSite };
+    //     }
+    //     if (!options.headers["Miru-Url"]) {
+    //         options.headers = { ...options.headers, "Miru-Url": this.webSite };
+    //     }
+    //     const miruProxy = this.proxyUrl + url;
+    //     return request(miruProxy, options);
+    // }
+
     request(url: string, options?: any) {
-        if (!options) {
-            options = {};
-        }
-        if (!options.headers) {
-            options.headers = { "Miru-Url": this.webSite };
-        }
-        if (!options.headers["Miru-Url"]) {
-            options.headers = { ...options.headers, "Miru-Url": this.webSite };
-        }
-        const miruProxy = this.proxyUrl + url;
-        return request(miruProxy, options);
+      if (!options) {
+        options = {};
+      }
+      if (!options.headers) {
+        options.headers = { "Miru-Url": this.webSite };
+      }
+      if (!options.headers["Miru-Url"]) {
+        options.headers = { ...options.headers, "Miru-Url": this.webSite };
+      }
+    
+      // 动态获取默认的请求头部信息
+      const defaultHeaders = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
+        Connection: 'keep-alive',
+      };
+    
+      // 将默认的请求头部信息与传入的 options.headers 进行合并
+      options.headers = { ...defaultHeaders, ...options.headers };
+    
+      const miruProxy = this.proxyUrl + url;
+      return request(miruProxy, options);
     }
 
     // 最近更新
