@@ -128,7 +128,7 @@ export default function BaseDetail() {
             <div className="w-56 flex-col items-center mb-0 md:flex md:w-1/4 lg:w-1/5">
                 <LoadingImg
                     className="mb-3 rounded-xl shadow-2xl ring-4 ring-gray-300 md:block w-full"
-                    src={detail?.cover}
+                    src={detail?.cover || 'https://i.postimg.cc/HLyc2Z18/2021102912063368.jpg'}
                     alt={detail.title}
                 />
                 <div className="mt-3 flex w-full flex-col justify-between md:mt-0 xl:flex-row">
