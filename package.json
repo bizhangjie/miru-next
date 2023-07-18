@@ -17,7 +17,6 @@
     "artplayer": "^5.0.0",
     "artplayer-plugin-dash-quality": "^2.0.0",
     "artplayer-plugin-hls-quality": "^2.0.0",
-    "axios": "^1.4.0",
     "clsx": "^1.2.1",
     "csstype": "^3.0.10",
     "dashjs": "^4.6.0",
